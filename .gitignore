@@ -1,0 +1,6 @@
+bible
+
+*.o
+*.a
+*.so
+src/cJSON-*/cJSON_test

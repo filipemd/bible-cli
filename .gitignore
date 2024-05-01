@@ -1,6 +1,12 @@
 bible
 
+
 *.o
 *.a
-*.so
+*.so.*
 src/cJSON-*/cJSON_test
+
+# macOS
+
+*.dylib
+*.dylib.*

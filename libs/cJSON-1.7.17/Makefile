@@ -74,10 +74,10 @@ shared: $(CJSON_SHARED) $(UTILS_SHARED)
 
 static: $(CJSON_STATIC) $(UTILS_STATIC)
 
-tests: $(CJSON_TEST)
+#tests: $(CJSON_TEST)
 
-test: tests
-	./$(CJSON_TEST)
+#test: tests
+#	./$(CJSON_TEST)
 
 .c.o:
 	$(CC) -c $(R_CFLAGS) $<

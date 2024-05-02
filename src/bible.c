@@ -3,6 +3,9 @@
 
 #include "bible.h"
 
+#define MAX_PATH_SIZE 64
+#define BIBLE_PATH "bible-json"
+
 static int fsize(FILE *fp){
     int prev=ftell(fp);
     fseek(fp, 0L, SEEK_END);

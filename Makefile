@@ -13,7 +13,7 @@ src/%.o: src/%.c
 	$(CC) -c $< -o $@ $(C_FLAGS) -I$(CJSON_DIR) -O$(OPTIMIZATION_LEVEL)
 
 $(EXECUTABLE_NAME): $(OBJ_FILES)
-	$(CC) $^ $(CJSON_DIR)/cJSON.o -o $@ $(C_FLAGS) -I$(CJSON_DIR) -O$(OPTIMIZATION_LEVEL)
+	$(CC) $^ $(CJSON_DIR)/libcjson.a -o $@ $(C_FLAGS) -I$(CJSON_DIR) -O$(OPTIMIZATION_LEVEL)
 
 cjson:
 	make -C $(CJSON_DIR)

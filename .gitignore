@@ -1,10 +1,10 @@
 bible
+cJSON_test
 
 
 *.o
 *.a
 *.so.*
-cJSON_test
 
 # macOS
 

@@ -2,7 +2,7 @@ CC = gcc
 C_FLAGS = -Wall -Werror -Wextra
 EXECUTABLE_NAME = bible
 OPTIMIZATION_LEVEL = s
-CJSON_DIR = libs/cJSON-1.7.17
+CJSON_DIR = third-party/cJSON
 
 C_FILES = $(wildcard src/*.c)
 OBJ_FILES = $(patsubst src/%.c,src/%.o,$(C_FILES))

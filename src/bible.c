@@ -6,6 +6,12 @@
 #define MAX_PATH_SIZE 64
 #define BIBLE_PATH "bible-json"
 
+#ifdef _WIN32
+#define PATH_SEPARATOR  "\\"
+#else
+#define PATH_SEPARATOR  "/"
+#endif
+
 static int fsize(FILE *fp){
     int prev=ftell(fp);
     fseek(fp, 0L, SEEK_END);
@@ -16,7 +22,7 @@ static int fsize(FILE *fp){
 
 const cJSON* get_bible(const char* version, const char* book) {
     char path[MAX_PATH_SIZE];
-    snprintf(path, MAX_PATH_SIZE, "%s/%s/%s.json", BIBLE_PATH, version, book);
+    snprintf(path, MAX_PATH_SIZE, "%s%s%s%s%s.json", BIBLE_PATH, PATH_SEPARATOR, version, PATH_SEPARATOR, book);
 
     FILE* file = fopen(path, "r");
     if (file == NULL) {

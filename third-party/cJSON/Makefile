@@ -70,7 +70,7 @@ SHARED_CMD = $(CC) -shared -o
 
 all: shared static tests
 
-shared: $(CJSON_SHARED) $(UTILS_SHARED)
+#shared: $(CJSON_SHARED) $(UTILS_SHARED)
 
 static: $(CJSON_STATIC) $(UTILS_STATIC)
 

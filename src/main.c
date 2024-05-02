@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     if (strcmp(argv[argc-1], "--cli") == 0)
         return cli_main(argc, argv);
     else
-        return gui_main();
+        return gui_main(argc, argv);
 }
 
 int index_string(const char *strings[], int size, const char *target, int jump) {

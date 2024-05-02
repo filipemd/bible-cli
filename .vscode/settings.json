@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        ".fantomasignore": "ignore",
+        "string": "c",
+        "format": "c",
+        "chrono": "c"
+    }
+}

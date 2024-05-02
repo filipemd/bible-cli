@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #include "bible.h"
 
@@ -16,7 +17,7 @@ const cJSON* get_bible(const char* version, const char* book) {
 
     FILE* file = fopen(path, "r");
     if (file == NULL) {
-        printf("Unable to read file.");
+        printf("Version or book doesn't exists!.\n");
         return NULL;
     }
     const int file_size = fsize(file);

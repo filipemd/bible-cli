@@ -20,7 +20,7 @@ CPP_OBJ_FILES := $(patsubst src/%.cc, src/%.o, $(CPP_FILES))
 all: cjson $(EXECUTABLE_NAME)
 
 src/%.o: src/%.c
-	$(CC) -c $< -o $@ $(C_FLAGS) -I$(CJSON_DIR) -O$(OPTIMIZATION_LEVEL)
+	$(CC) -c $< -o $@ $(C_FLAGS) -I$(CJSON_DIR) $(C_LIBS) -O$(OPTIMIZATION_LEVEL)
 
 src/%.o: src/%.cc
 	$(CXX) -c $< -o $@ $(CXX_FLAGS) -I$(CJSON_DIR) $(CXX_LIBS) -O$(OPTIMIZATION_LEVEL)

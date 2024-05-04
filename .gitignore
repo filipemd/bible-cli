@@ -1,7 +1,6 @@
 bible
 cJSON_test
 
-
 *.o
 *.a
 *.so.*
@@ -10,3 +9,7 @@ cJSON_test
 
 *.dylib
 *.dylib.*
+
+#VSCode
+
+.vscode

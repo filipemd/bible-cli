@@ -9,6 +9,9 @@ cJSON_test
 
 *.dylib
 *.dylib.*
+*.app
+
+.DS_Store
 
 #VSCode
 

@@ -44,7 +44,7 @@ int cli_main(int argc, char* argv[]) {
             return -1;
         }
         const cJSON* chapter = cJSON_GetArrayItem(bible, chapter_number);
-        if (argc == 5) {
+        if (argc >= 5) {
             const uint8_t verse_number = atoi(argv[4])-1;
             const uint8_t chapterSize = cJSON_GetArraySize(chapter);
             if (verse_number >= chapterSize) {

@@ -18,7 +18,9 @@ cJSON* get_bible(const char* version, const char* book) {
 
     FILE* file = fopen(path, "r");
     if (file == NULL) {
-        printf("Version or book doesn't exists!.\n");
+        perror("Bible file not found! Make sure you run the binary in the bible-cli directory!\n"
+               "If you're using MacOS, make sure you're running the binary using the terminal.\n"
+               "Error");
         return NULL;
     }
     const int file_size = fsize(file);

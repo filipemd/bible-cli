@@ -30,6 +30,7 @@ Window::Window(QWidget *parent) :
 
     chapter = new QSpinBox;
     chapter->setMinimum(1);
+    BookChanged();
 
     grid->addWidget(versions_combo, 0, 0, Qt::AlignTop);
     grid->addWidget(books_combo, 0, 1, Qt::AlignTop);

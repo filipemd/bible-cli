@@ -64,8 +64,8 @@ int cli_main(int argc, char* argv[]) {
             }
         }
     } else {
-        printf("Usage: \n");
-        printf("bible <version> <book> <chapter> <verse>\n\n");
+        printf("Usage: \n"
+               "bible <version> <book> <chapter> <verse>\n\n");
 
         show_versions();
         show_books();

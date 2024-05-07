@@ -32,7 +32,7 @@ int cli_main(int argc, char* argv[]) {
             show_books();
             return -1;
         }
-        const cJSON* bible = get_bible(argv[1], argv[2]);
+        cJSON* bible = get_bible(argv[1], argv[2]);
         if (!bible){
             return -1;
         }
@@ -43,7 +43,7 @@ int cli_main(int argc, char* argv[]) {
             printf("The amount of chapters in the book is %d.\n", bookSize);
             return -1;
         }
-        const cJSON* chapter = cJSON_GetArrayItem(bible, chapter_number);
+        cJSON* chapter = cJSON_GetArrayItem(bible, chapter_number);
         if (argc >= 5) {
             const uint8_t verse_number = atoi(argv[4])-1;
             const uint8_t chapterSize = cJSON_GetArraySize(chapter);
@@ -57,7 +57,7 @@ int cli_main(int argc, char* argv[]) {
             printf("%s chapter %d. Version: %s.\n\n", books[index_string(books, BOOKS_AMOUNT, argv[2], 2)+1], chapter_number+1, versions[index_string(versions, VERSIONS_AMOUNT, argv[1], 2)+1]);
 
             uint8_t verse_number = 1;
-            const cJSON* verse = NULL;
+            cJSON* verse = NULL;
             cJSON_ArrayForEach(verse, chapter) {
                 printf("%d %s\n", verse_number, verse->valuestring);
                 verse_number++;

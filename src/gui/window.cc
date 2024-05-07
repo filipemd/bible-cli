@@ -6,10 +6,6 @@
 
 namespace bible {
 #include "../bible-lists.h"
-
-extern "C" {
-#include "../bible.h"
-}
 }
 
 Window::Window(QWidget *parent) :
@@ -41,10 +37,9 @@ Window::Window(QWidget *parent) :
 }
 
 void Window::BookChanged() {
-    const char* version = bible::versions[versions_combo->currentIndex()*2];
-    const char* book = bible::books[books_combo->currentIndex()*2]; 
-
-    const bible::cJSON* book_json = bible::get_bible(version, book);
+    book_json = bible::get_bible(bible::versions[versions_combo->currentIndex()*2], bible::books[books_combo->currentIndex()*2]);
 
     chapter->setMaximum(bible::cJSON_GetArraySize(book_json));
+
+    bible::cJSON_Delete(book_json);
 }

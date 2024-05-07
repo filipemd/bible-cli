@@ -3,6 +3,12 @@
 
 #include <QWidget>
 
+namespace bible {
+extern "C" {
+#include "../bible.h"
+}
+}
+
 class QComboBox;
 class QGridLayout;
 class QSpinBox;
@@ -21,6 +27,9 @@ private:
     QComboBox* books_combo;
 
     QSpinBox* chapter;
+
+    // JSON da Bíblia
+    bible::cJSON* book_json;
 };
 
 #endif // WINDOW_H

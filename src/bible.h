@@ -4,6 +4,6 @@
 #include <stdint.h>
 #include "cJSON/cJSON.h"
 
-const cJSON* get_bible(const char* version, const char* book);
+cJSON* get_bible(const char* version, const char* book);
 
 #endif

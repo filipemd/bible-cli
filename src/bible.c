@@ -12,9 +12,9 @@ static int fsize(FILE *fp){
     return sz;
 }
 
-const cJSON* get_bible(const char* version, const char* book) {
+cJSON* get_bible(const char* version, const char* book) {
     char path[MAX_PATH_SIZE];
-    snprintf(path, MAX_PATH_SIZE, "%s"SEP"%s"SEP"%s.json", BIBLE_PATH, version, book);
+    snprintf(path, MAX_PATH_SIZE, "%s/%s/%s.json", BIBLE_PATH, version, book);
 
     FILE* file = fopen(path, "r");
     if (file == NULL) {

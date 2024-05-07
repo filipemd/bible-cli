@@ -20,8 +20,9 @@ QT += widgets core gui
 #DEFINES += QT_DISABLE_DEPRECATED_UP_TO=0x060000 # disables all APIs deprecated in Qt 6.0.0 and earlier
 
 # Input
-SOURCES += gui-main.h
-SOURCES += window.h
+HEADERS += gui-main.h
+HEADERS += window.h
+HEADERS += ../*.h
 
 SOURCES += gui-main.cc
 SOURCES += window.cc

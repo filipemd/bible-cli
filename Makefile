@@ -1,7 +1,10 @@
 CC = gcc
 CXX = g++
-C_FLAGS = -Wall -Wextra
-CXX_FLAGS = -Wall -Wextra --std=c++17
+
+QMAKE = qmake|qmake6
+
+C_FLAGS = -Wall -Wextra -Wpedantic
+CXX_FLAGS = -Wall -Wextra -Wpedantic
 EXECUTABLE_NAME = bible
 OPTIMIZATION_LEVEL = s
 

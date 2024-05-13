@@ -6,14 +6,14 @@
 #include "bible.h"
 #include "bible-lists.h"
 
-static void show_versions() {
+static void show_versions(void) {
     printf("Versions: \n\n");
     for(unsigned i = 0; i < VERSIONS_AMOUNT*2; i+=2) {
         printf("%s\t%s\n", versions[i], versions[i+1]);
     }
 }
 
-static void show_books() {
+static void show_books(void) {
     printf("\nBooks: \n\n");
     for(unsigned i = 0; i < BOOKS_AMOUNT*2; i+=2) {
         printf("%s\t%s\n", books[i], books[i+1]);

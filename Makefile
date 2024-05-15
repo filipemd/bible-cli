@@ -1,7 +1,7 @@
 CC = gcc
 CXX = g++
 
-QMAKE = qmake|qmake6
+QMAKE = qmake
 
 C_FLAGS = -Wall -Wextra -Wpedantic
 CXX_FLAGS = -Wall -Wextra -Wpedantic
@@ -42,7 +42,7 @@ cjson:
 	make -C $(THIRDPARTY_DIR)/cJSON
 
 gui:
-	cd src/gui && qmake . && make
+	cd src/gui && $(QMAKE) . && make
 
 clean:
 	rm -rf $(C_OBJ_FILES) $(CPP_OBJ_FILES) $(EXECUTABLE_NAME)

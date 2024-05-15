@@ -4,16 +4,20 @@
 #include <QGridLayout>
 #include <QSpinBox>
 
+#include <QScrollArea>
+#include <QScrollBar>
+
 namespace bible {
 #include "../bible-lists.h"
 }
 
 Window::Window(QWidget *parent) :
     QWidget(parent) {
-    // Set size of the window
+    
     setWindowTitle("Bible Desktop");
 
-    grid = new QGridLayout(this);
+    // UI para selecionar o capítulo.
+    QGridLayout* grid = new QGridLayout(this);
 
     versions_combo = new QComboBox(this);
     for(unsigned i = 0; i < VERSIONS_AMOUNT*2; i+=2) {
@@ -28,13 +32,24 @@ Window::Window(QWidget *parent) :
     connect(versions_combo, SIGNAL(currentIndexChanged(int)), this, SLOT( BookChanged() ));
     connect(books_combo, SIGNAL(currentIndexChanged(int)), this, SLOT( BookChanged() ));
 
-    chapter = new QSpinBox;
+    chapter = new QSpinBox(this);
     chapter->setMinimum(1);
     BookChanged();
 
     grid->addWidget(versions_combo, 0, 0, Qt::AlignTop);
     grid->addWidget(books_combo, 0, 1, Qt::AlignTop);
     grid->addWidget(chapter, 0, 2, Qt::AlignTop);
+
+    // O conteúdo do capítulo.
+
+    QScrollArea* page_scroll = new QScrollArea(this);
+        
+    grid->addWidget(page_scroll, 1, 0, 1, 3);
+
+    std::vector<std::string> verses = {"Hello,", "World!!"};
+    page = new Page(verses, page_scroll);
+
+    page_scroll->setWidget(page);
 }
 
 void Window::BookChanged() {

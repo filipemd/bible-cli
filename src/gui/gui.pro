@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = ../../Bible
+TARGET = ../../bible
 INCLUDEPATH += .
 
 LIBS += ../../third-party/cJSON/libcjson.a
@@ -22,10 +22,13 @@ QT += widgets core gui
 # Input
 HEADERS += gui-main.h
 HEADERS += window.h
+HEADERS += page.h
+
 HEADERS += ../*.h
 
 SOURCES += gui-main.cc
 SOURCES += window.cc
+SOURCES += page.cc
 
 SOURCES += ../*.c
 SOURCES += ../*.cc

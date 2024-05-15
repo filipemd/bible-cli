@@ -2,17 +2,17 @@
 #define WINDOW_H
 
 #include <QWidget>
-
+#include <vector>
 namespace bible {
 extern "C" {
 #include "../bible.h"
 }
 }
 
-class QComboBox;
-class QGridLayout;
-class QSpinBox;
+#include "page.h"
 
+class QComboBox;
+class QSpinBox;
 class Window : public QWidget
 {
     Q_OBJECT
@@ -21,7 +21,7 @@ public:
 private slots:
     void BookChanged();
 private:
-    QGridLayout* grid;
+    Page* page;
 
     QComboBox* versions_combo;
     QComboBox* books_combo;

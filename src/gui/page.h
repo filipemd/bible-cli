@@ -11,7 +11,8 @@ class QLabel;
 
 class Page : public QWidget {
 public:
-    explicit Page(std::vector<std::string> verses, QWidget* parent);
+    explicit Page(QWidget* parent);
+    void updateVerses(const std::vector<std::string>& verses);
 private:
     QLabel* label;
 };

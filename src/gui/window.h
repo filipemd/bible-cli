@@ -2,7 +2,8 @@
 #define WINDOW_H
 
 #include <QWidget>
-#include <vector>
+
+#include <memory>
 namespace bible {
 extern "C" {
 #include "../bible.h"
@@ -19,7 +20,9 @@ class Window : public QWidget
 public:
     explicit Window(QWidget *parent = 0);
 private slots:
+    void VersionChanged();
     void BookChanged();
+    void ChapterChanged();
 private:
     Page* page;
 

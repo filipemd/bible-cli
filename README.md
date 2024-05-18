@@ -1,5 +1,7 @@
 # Bible CLI
 
+![Bible CLI](screenshots/screenshot1.png)
+
 Um simples programa de Bíblia escrito em C e a biblioteca [cJSON](https://github.com/DaveGamble/cJSON).
 
 Os dados em JSON da Bíblia foram extraídos usando o [PyBible](https://github.com/filipemd/PyBible).
@@ -15,11 +17,11 @@ Vai aparecer um executável chamado `bible`. Se você não estiver usando Linux,
 
 ## Como utilizar
 
-Digitando `./bible` na pasta do programa, vai aparecer isto:
+Digitando `./bible --cli` na pasta do programa, vai aparecer isto:
 
 ```
 Usage: 
-bible <version> <book> <chapter> <verse>
+bible <version> <book> <chapter> <verse> --cli
 ```
 
  - version  - versão

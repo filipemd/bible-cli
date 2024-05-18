@@ -14,6 +14,7 @@ extern "C" {
 
 class QComboBox;
 class QSpinBox;
+class QScrollArea;
 class Window : public QWidget
 {
     Q_OBJECT
@@ -24,6 +25,7 @@ private slots:
     void BookChanged();
     void ChapterChanged();
 private:
+    QScrollArea* page_scroll;
     Page* page;
 
     QComboBox* versions_combo;

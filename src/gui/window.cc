@@ -5,7 +5,6 @@
 #include <QSpinBox>
 
 #include <QScrollArea>
-#include <QScrollBar>
 
 #include <iostream>
 namespace bible {
@@ -26,7 +25,7 @@ Window::Window(QWidget *parent) :
     }
 
     books_combo = new QComboBox(this);
-    for(unsigned i = 0; i < BOOKS_AMOUNT*2; i+=2) {
+    for(uint8_t i = 0; i < BOOKS_AMOUNT*2; i+=2) {
         books_combo->addItem(bible::books[i+1], bible::books[i]);
     }
 
@@ -47,7 +46,7 @@ Window::Window(QWidget *parent) :
 
     // O conteúdo do capítulo.
 
-    QScrollArea* page_scroll = new QScrollArea(this);
+    page_scroll = new QScrollArea(this);
     page_scroll->setWidgetResizable(true);
     page_scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         

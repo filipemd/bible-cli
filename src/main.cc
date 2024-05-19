@@ -10,11 +10,12 @@ extern "C" {
 #endif
 
 int main(int argc, char* argv[]) {
-    #ifndef CLI
+    #ifdef CLI
+    return cli_main(argc, argv);
+    #else
+
     if (strcmp(argv[argc-1], "--cli") == 0)
-    #endif
-        return cli_main(argc, argv);
-    #ifndef CLI
+        return cli_main(argc-1, argv);
     else
         return gui_main(argc, argv);
     #endif

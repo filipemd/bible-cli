@@ -12,8 +12,6 @@ INCLUDE_PATH =
 
 THIRDPARTY_DIR = third-party
 
-CLI = false
-
 # Find all C files recursively under src directory
 C_FILES := src/bible.c src/cli-main.c
 # Find all C++ files recursively under src directory
@@ -22,6 +20,9 @@ CPP_FILES := src/main.cc
 # Generate object file names for C and C++ files
 C_OBJ_FILES := $(patsubst src/%.c, src/%.o, $(C_FILES))
 CPP_OBJ_FILES := $(patsubst src/%.cc, src/%.o, $(CPP_FILES))
+
+CLI = false
+UNAME_S := $(shell uname -s)
 
 ifeq ($(CLI), true)
 all: cjson $(EXECUTABLE_NAME)
@@ -43,6 +44,32 @@ cjson:
 
 gui:
 	cd src/gui && $(QMAKE) . && make
+
+install:
+ifeq ($(UNAME_S), Darwin)
+ifeq ($(CLI), true)
+	cp $(EXECUTABLE_NAME) /usr/local/bin
+else
+	cp bible.app/Contents/MacOS/bible /usr/local/bin/
+endif
+
+	mkdir /usr/local/share/bible-cli/
+	cp -r bible-json /usr/local/share/bible-cli/
+else
+	cp $(EXECUTABLE_NAME) /usr/bin/
+
+	mkdir /usr/share/bible-cli/
+	cp -r bible-json /usr/share/bible-cli/
+endif
+
+uninstall:
+ifeq ($(UNAME_S), Darwin)
+	rm /usr/local/bin/$(EXECUTABLE_NAME)
+	rm -rf  /usr/local/share/bible-cli/
+else
+	rm /usr/bin/$(EXECUTABLE_NAME)
+	rm -rf  /usr/share/bible-cli/
+endif
 
 clean:
 	rm -rf $(C_OBJ_FILES) $(CPP_OBJ_FILES) $(EXECUTABLE_NAME)

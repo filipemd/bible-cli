@@ -44,7 +44,7 @@ int cli_main(int argc, char* argv[]) {
             return -1;
         }
         const cJSON* chapter = cJSON_GetArrayItem(bible, chapter_number);
-        if (argc >= 5) {
+        if (argc > 4) {
             const uint8_t verse_number = atoi(argv[4])-1;
             const uint8_t chapterSize = cJSON_GetArraySize(chapter);
             if (verse_number >= chapterSize) {
@@ -65,8 +65,13 @@ int cli_main(int argc, char* argv[]) {
             cJSON_Delete(verse);
         }
     } else {
+        #ifdef CLI
+        printf("Usage: \n"
+               "bible <version> <book> <chapter> <verse>\n\n");
+        #else
         printf("Usage: \n"
                "bible <version> <book> <chapter> <verse> --cli\n\n");
+        #endif
 
         show_versions();
         show_books();

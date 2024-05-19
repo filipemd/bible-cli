@@ -50,7 +50,7 @@ ifeq ($(UNAME_S), Darwin)
 ifeq ($(CLI), true)
 	cp $(EXECUTABLE_NAME) /usr/local/bin
 else
-	cp bible.app/Contents/MacOS/bible /usr/local/bin/
+	cp -r bible.app /Applications/
 endif
 
 	mkdir /usr/local/share/bible-cli/
@@ -64,7 +64,11 @@ endif
 
 uninstall:
 ifeq ($(UNAME_S), Darwin)
+ifeq ($(CLI), true)
 	rm /usr/local/bin/$(EXECUTABLE_NAME)
+else
+	rm -rf /Applications/bible.app
+endif
 	rm -rf  /usr/local/share/bible-cli/
 else
 	rm /usr/bin/$(EXECUTABLE_NAME)

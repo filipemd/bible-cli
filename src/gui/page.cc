@@ -14,7 +14,7 @@ Page::Page(QWidget* parent) : QWidget(parent) {
     setLayout(layout);
 }
 
-void Page::updateVerses(const std::vector<std::string>& verses) {
+/*void Page::updateVerses(const std::vector<std::string>& verses) {
     uint8_t number = 1;
     QString htmlText;
     for(const auto& verse : verses) {
@@ -28,4 +28,19 @@ void Page::updateVerses(const std::vector<std::string>& verses) {
     
     // Ajuste a largura máxima do QLabel para corresponder à largura da janela
     label->setMaximumWidth(this->width());
+}*/
+
+void Page::addVerse(std::string verse, uint8_t number) {
+    text.append("<p><font size=\"2\" color=\"gray\">" + QString::number(number) + "\t</font><font size=\"4\">" + QString::fromStdString(verse) + "</font></p>");
+}
+
+void Page::updateVerses() {
+    label->setText(text);
+
+    adjustSize();
+    label->setMaximumWidth(this->width());
+}
+
+void Page::clearVerses() {
+    text = "";
 }

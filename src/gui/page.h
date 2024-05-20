@@ -4,7 +4,6 @@
 #include <QWidget>
 
 #include <string>
-#include <vector>
 
 class QString;
 class QLabel;
@@ -12,9 +11,13 @@ class QLabel;
 class Page : public QWidget {
 public:
     explicit Page(QWidget* parent);
-    void updateVerses(const std::vector<std::string>& verses);
+    void addVerse(std::string verse, uint8_t number);
+    void updateVerses();
+    void clearVerses();
 private:
     QLabel* label;
+
+    QString text;
 };
 
 #endif

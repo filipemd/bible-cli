@@ -78,13 +78,15 @@ void Window::BookChanged() {
 }
 
 void Window::ChapterChanged() {
-    std::vector<std::string> verses;
+    page->clearVerses();
 
+    uint8_t number = 1;
     bible::cJSON* verse;
     cJSON_ArrayForEach(verse, bible::cJSON_GetArrayItem(book_json, chapter->value()-1)) {
-        verses.push_back(verse->valuestring);
+        page->addVerse(verse->valuestring, number);
+        number++;
     }
     cJSON_Delete(verse);
 
-    page->updateVerses(verses);
+    page->updateVerses();
 }

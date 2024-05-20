@@ -53,12 +53,12 @@ else
 	cp -r bible.app /Applications/
 endif
 
-	mkdir /usr/local/share/bible-cli/
+	mkdir -p /usr/local/share/bible-cli/
 	cp -r bible-json /usr/local/share/bible-cli/
 else
 	cp $(EXECUTABLE_NAME) /usr/bin/
 
-	mkdir /usr/share/bible-cli/
+	mkdir -p /usr/share/bible-cli/
 	cp -r bible-json /usr/share/bible-cli/
 endif
 

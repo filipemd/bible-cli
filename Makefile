@@ -1,7 +1,7 @@
 CC = gcc
 CXX = g++
 
-QMAKE = qmake
+QMAKE = qmake6
 
 C_FLAGS = -Wall -Wextra -Wpedantic
 CXX_FLAGS = -Wall -Wextra -Wpedantic

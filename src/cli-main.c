@@ -65,13 +65,8 @@ int cli_main(int argc, char* argv[]) {
             cJSON_Delete(verse);
         }
     } else {
-        #ifdef CLI
         printf("Usage: \n"
                "bible <version> <book> <chapter> <verse>\n\n");
-        #else
-        printf("Usage: \n"
-               "bible <version> <book> <chapter> <verse> --cli\n\n");
-        #endif
 
         show_versions();
         show_books();

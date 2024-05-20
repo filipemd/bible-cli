@@ -22,7 +22,7 @@ Digitando `./bible --cli` (ou apenas `./bible`, caso você compilou a versão pa
 
 ```
 Usage: 
-bible <version> <book> <chapter> <verse> --cli
+bible <version> <book> <chapter> <verse>
 ```
 
  - version  - versão

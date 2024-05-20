@@ -14,8 +14,8 @@ int main(int argc, char* argv[]) {
     return cli_main(argc, argv);
     #else
 
-    if (strcmp(argv[argc-1], "--cli") == 0)
-        return cli_main(argc-1, argv);
+    if (argc > 1)
+        return cli_main(argc, argv);
     else
         return gui_main(argc, argv);
     #endif

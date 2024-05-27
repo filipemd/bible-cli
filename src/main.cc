@@ -10,6 +10,7 @@ extern "C" {
 #endif
 
 int main(int argc, char* argv[]) {
+    system("mkdir -p ~/.bible");
     #ifdef CLI
     return cli_main(argc, argv);
     #else

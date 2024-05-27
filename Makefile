@@ -33,6 +33,7 @@ endif
 src/%.o: src/%.c
 	$(CC) -c $< -o $@ $(C_FLAGS) -I$(THIRDPARTY_DIR) -O$(OPTIMIZATION_LEVEL) -DCLI
 
+
 src/%.o: src/%.cc
 	$(CXX) -c $< -o $@ $(CXX_FLAGS) -I$(THIRDPARTY_DIR) -O$(OPTIMIZATION_LEVEL) -DCLI
 
@@ -40,10 +41,10 @@ $(EXECUTABLE_NAME): $(C_OBJ_FILES) $(CPP_OBJ_FILES)
 	$(CXX) $(C_OBJ_FILES) $(CPP_OBJ_FILES) $(THIRDPARTY_DIR)/cJSON/libcjson.a -o $@ $(CXX_FLAGS) -O$(OPTIMIZATION_LEVEL)
 
 cjson:
-	make -C $(THIRDPARTY_DIR)/cJSON
+	$(MAKE) -C $(THIRDPARTY_DIR)/cJSON
 
 gui:
-	cd src/gui && $(QMAKE) . && make
+	cd src/gui && $(QMAKE) . && $(MAKE)
 
 install:
 ifeq ($(UNAME_S), Darwin)

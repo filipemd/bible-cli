@@ -29,14 +29,28 @@ Window::Window(QWidget *parent) :
         books_combo->addItem(bible::books[i+1], bible::books[i]);
     }
 
+    chapter = new QSpinBox(this);
+    chapter->setMinimum(1);
+
+    bible::cJSON* history = bible::bible_get_save();
+
+    if (history != NULL) {
+        bible::cJSON* version_json = bible::cJSON_GetObjectItemCaseSensitive(history, "version");
+        bible::cJSON* book_json = bible::cJSON_GetObjectItemCaseSensitive(history, "book");
+        bible::cJSON* chapter_json = bible::cJSON_GetObjectItemCaseSensitive(history, "chapter");
+
+        versions_combo->setCurrentIndex(version_json->valueint);
+        books_combo->setCurrentIndex(book_json->valueint);
+        chapter->setValue(chapter_json->valueint);
+
+        bible::cJSON_Delete(history);
+    }
+
     connect(versions_combo, SIGNAL(currentIndexChanged(int)), this, SLOT( VersionChanged() ));
     connect(books_combo, SIGNAL(currentIndexChanged(int)), this, SLOT( BookChanged() ));
 
     connect(versions_combo, SIGNAL(currentIndexChanged(int)), this, SLOT( ChapterChanged() ));
     connect(books_combo, SIGNAL(currentIndexChanged(int)), this, SLOT( ChapterChanged() ));
-
-    chapter = new QSpinBox(this);
-    chapter->setMinimum(1);
 
     connect(chapter, SIGNAL( valueChanged(int) ), this, SLOT ( ChapterChanged() ));
 
@@ -73,8 +87,6 @@ void Window::VersionChanged() {
 
 void Window::BookChanged() {
     VersionChanged();
-
-    chapter->setValue(1);
 }
 
 void Window::ChapterChanged() {
@@ -89,4 +101,8 @@ void Window::ChapterChanged() {
     cJSON_Delete(verse);
 
     page->updateVerses();
+}
+
+Window::~Window() {
+    bible::bible_save(versions_combo->currentIndex(), books_combo->currentIndex(), chapter->value());
 }

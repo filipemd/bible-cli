@@ -27,12 +27,9 @@ static int fsize(FILE *fp){
 
 #define HOME getenv("HOME")
 
-static const char* get_file(const char* folder) {
-    char* path = malloc(MAX_PATH_SIZE);
-    for (unsigned i = 0; i < PATHS_AMOUNT; i++) {
-        if (path != NULL) 
-            free(path);
-            
+static char* get_file(const char* folder) {
+    char path[MAX_PATH_SIZE];
+    for (unsigned i = 0; i < PATHS_AMOUNT; i++) {            
         snprintf(path, MAX_PATH_SIZE, "%s/%s", paths[i], folder);
 
         FILE* file = fopen(path, "r");

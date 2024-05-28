@@ -9,6 +9,7 @@ Page::Page(QWidget* parent) : QWidget(parent) {
     
     label = new QLabel(this);
     label->setWordWrap(true); // Habilita a quebra de linha
+    label->setTextInteractionFlags(Qt::TextSelectableByMouse);
 
     layout->addWidget(label);
     setLayout(layout);

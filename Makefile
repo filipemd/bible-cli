@@ -1,5 +1,13 @@
+UNAME_S := $(shell uname -s)
+
+ifeq (UNAME_S, FreeBSD)
+CC = clang
+CXX = clang++
+else
 CC = gcc
 CXX = g++
+endif
+
 
 QMAKE = qmake6
 
@@ -22,7 +30,6 @@ C_OBJ_FILES := $(patsubst src/%.c, src/%.o, $(C_FILES))
 CPP_OBJ_FILES := $(patsubst src/%.cc, src/%.o, $(CPP_FILES))
 
 CLI = false
-UNAME_S := $(shell uname -s)
 
 ifeq ($(CLI), true)
 all: cjson $(EXECUTABLE_NAME)

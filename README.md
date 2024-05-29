@@ -8,17 +8,68 @@ Os dados em JSON da Bíblia foram extraídos usando o [PyBible](https://github.c
 
 ## Como compilar
 
- - Baixe o código-fonte;
- - Baixe o GCC (outros compiladores podem funcionar, mas eu não testei com nenhum outro além do GCC) e o Makefile (pré-instalado em muitos sistemas).
- - Baixe o QT.
- - Abra a pasta do código-fonte e digite `make` para compilar. Este comando compila tanto a cJSON, quanto o programa. Caso queira compilar apenas para linha de comando, digite `make CLI=true`. Você não vai precisar instalar o QT.
- - Caso queira instalar o programa, digite `sudo make install`. No Linux, é só digitar `bible` no terminal. No MacOS, vai aparecer um programa chamado `bible` junto com os outros aplicativos.
+São suportadas estas plataformas:
+ - Linux;
+ - MacOS;
+ - BSD (por enquanto, apenas o FreeBSD foi testado).
 
-Vai aparecer um executável chamado `bible`. Se você não estiver usando Linux, podem aparecer erros. Eles serão provavelmente resolvidos no futuro. Este programa quase certamente não funcionará no Windows, a não ser que seja utilizado o WSL (Windows Subsystem for Linux).
+### Instale um compilador de C/C++
+
+Tanto o MacOS, quanto o FreeBSD já vem com um compilador C/C++ instalado (no caso o Clang), você pode verificar digitando no terminal:
+
+```
+clang --version
+```
+
+A maior parte das distros Linux também vem com um com um compilador C/C++ instalado (no caso o GCC). Você pode verificar digitando no terminal:
+
+```
+gcc --version
+```
+
+### Instale o Qt
+
+#### MacOS
+
+Para instalar o Qt no MacOS, digite no terminal (caso tenha o Homebrew instalado. Caso contrário, baixe o Homebrew):
+
+```
+brew install qt
+```
+
+#### Linux
+
+Caso você use uma distro que tenha como interface gráfica ambientes de desktop baseados em Qt, como o KDE Plasma e o LXQt, você pode pular esta etapa.
+
+Para instalar o Qt em distros baseadas no Debian:
+
+```
+sudo apt install qt6-base-dev
+```
+
+Para instalar o Qt em distros baseadas no Fedora:
+
+```
+sudo dnf install qt6-qtbase
+```
+
+Para instalar o Qt em distros baseadas no Arch:
+
+```
+sudo pacman -S qt6-base
+```
+
+### Instale o Make
+
+O Make vem pré-instalado no Linux, no MacOS e no FreeBSD, mas a versão do FreeBSD tem uma sintaxe diferente, então instale o GMake:
+
+```
+sudo pkg install gmake
+```
 
 ## Como utilizar a versão CLI
 
-Digitando `./bible --cli` (ou apenas `./bible`, caso você compilou a versão para linha de comando) na pasta do programa, vai aparecer isto:
+Digitando `./bible` na pasta do programa, vai aparecer isto:
 
 ```
 Usage: 
